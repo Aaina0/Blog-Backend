@@ -54,7 +54,7 @@ process.on("unhandledRejection", (err) => {
 });
 
 // Start Server
-const startServer = async () => {
+const Server = async () => {
   try {
     await database();
     app.listen(PORT, () => {
@@ -66,4 +66,4 @@ const startServer = async () => {
   }
 };
 
-startServer();
+Server();
