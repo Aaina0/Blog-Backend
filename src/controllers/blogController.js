@@ -4,21 +4,6 @@ import User from "../model/userModel.js";
 import bcrypt from "bcrypt";
 import { CustomError } from "../middleware/errorHandler.js";
 
-const createBlogSetup = asyncHandler(async (req, res, next) => {
-  const { blogTitle, blogLogo, description } = req.body;
-
-  const newBlogSetup = new BlogSetup({
-    blogTitle,
-    blogLogo,
-    description,
-  });
-
-  await newBlogSetup.save();
-  res
-    .status(201)
-    .json({ message: "Blog setup created successfully", data: newBlogSetup });
-});
-
 const BlogSetupSave = asyncHandler(async (req, res, next) => {
   console.log("Request body:", req.body);
   console.log("Uploaded file:", req.file);
@@ -56,4 +41,4 @@ const BlogSetupSave = asyncHandler(async (req, res, next) => {
     .json({ message: "Blog setup and admin user created successfully" });
 });
 
-export { createBlogSetup, BlogSetupSave };
+export { BlogSetupSave };

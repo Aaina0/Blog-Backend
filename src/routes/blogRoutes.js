@@ -2,10 +2,7 @@ import express from "express";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
-import {
-  BlogSetupSave,
-  createBlogSetup,
-} from "../controllers/blogController.js";
+import { BlogSetupSave } from "../controllers/blogController.js";
 import { protect } from "../middleware/authorization.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -26,7 +23,6 @@ const app = express();
 
 app.use(express.json());
 
-app.post("/create", protect, createBlogSetup);
 app.post("/setup", upload.single("blog_image"), BlogSetupSave);
 
 app.use((err, req, res, next) => {
